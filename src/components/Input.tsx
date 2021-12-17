@@ -2,13 +2,20 @@ import clsx from 'clsx'
 import React, { ReactNode, isValidElement, cloneElement } from 'react'
 
 type Props = {
-  type: 'email' | 'password'
+  type: 'email' | 'password' | 'search'
   name: string
   placeholder: string
   icon: ReactNode
+  className?: string
 }
 
-export function Input({ type, name, placeholder, icon }: Props) {
+export function Input({
+  type,
+  name,
+  placeholder,
+  icon,
+  className,
+}: Props) {
   return (
     <label
       className={clsx(
@@ -16,7 +23,8 @@ export function Input({ type, name, placeholder, icon }: Props) {
         'bg-white',
         'p-3',
         'rounded-lg',
-        'focus-within:ring ring-primary'
+        'focus-within:ring ring-primary',
+        className
       )}>
       {isValidElement(icon) &&
         cloneElement(icon, { className: 'w-5 text-gray-dark' })}

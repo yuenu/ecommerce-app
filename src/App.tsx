@@ -1,40 +1,59 @@
-import { Icon, Input, Button } from '@/components'
-import { Auth as Layout } from '@/layouts'
+import { Icon, Input } from '@/components'
+import clsx from 'clsx'
 
-function App() {
+type AvatarProps = {
+  className?: string
+}
+
+function Avatar({ className }: AvatarProps) {
   return (
-    <Layout>
-      <div className="flex flex-col gap-5">
-        <Input
-          type="email"
-          name="email"
-          placeholder="Email"
-          icon={<Icon.Mail />}
-        />
-        <Input
-          type="password"
-          name="password"
-          placeholder="Password"
-          icon={<Icon.Lock />}
-        />
-      </div>
-
-      <div className="py-6">
-        <a href="/">Forget Password</a>
-      </div>
-
-      <Button>Sign In</Button>
-
-      <p className="mt-6 space-x-1">
-        <span className="font-light">Didn't have any account?</span>
-        <a
-          href="/"
-          className="font-normal border-b text-primary border-b-primary">
-          Sign Up here
-        </a>
-      </p>
-    </Layout>
+    <img
+      className={clsx('rounded-full object-cover', className)}
+      src="https://i.pravatar.cc/300"
+      alt="avatar"
+    />
   )
 }
 
-export default App
+type NavPrpos = {
+  className?: string
+}
+
+function Nav({ className }: NavPrpos) {
+  return (
+    <nav
+      className={clsx(
+        'flex justify-between items-center',
+        className
+      )}>
+      <button className="p-2">
+        <Icon.MenuVariant className="w-5" />
+      </button>
+
+      <span className="inline-flex gap-2">
+        <Icon.Logo className="w-5" />
+        <strong className="text-lg">Audio</strong>
+      </span>
+
+      <Avatar className="w-8" />
+    </nav>
+  )
+}
+
+export default function App() {
+  return (
+    <main>
+      <Nav className="px-6 py-4" />
+      <header>
+        <p>Hi, Andrea</p>
+        <h1>What are you looking for today?</h1>
+        <Input
+          type="search"
+          name="search"
+          placeholder="Search headphone"
+          icon={<Icon.Search />}
+        />
+      </header>
+    </main>
+  )
+}

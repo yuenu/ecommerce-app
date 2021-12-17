@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .bg-auth {
-	background-image: url(../public/images/bg.jpg);
-	background-size: cover;
-	@apply bg-no-repeat;
+  background-image: url(@/assets/images/bg.jpg);
+  background-size: cover;
+  @apply bg-no-repeat;
 }
