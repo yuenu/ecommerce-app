@@ -1,7 +1,7 @@
 import { Icon, Input, Button } from '@/components'
 import { Auth as Layout } from '@/layouts'
 
-export default function SignIn() {
+export function SignIn() {
   return (
     <Layout>
       <div className="flex flex-col gap-5">

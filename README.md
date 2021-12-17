@@ -8,7 +8,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## The feature I did
 
-In the project directory, you can run:
+[OAuth2.0](https://oauth.net/2/)
+
+[tailwindcss](https://tailwindcss.com/)
+
+[Mirage](https://miragejs.com/)
 
 ## Use dependencies
 

@@ -1,0 +1,78 @@
+import {
+  Icon,
+  Input,
+  Nav,
+  Panel,
+  List,
+  Badge,
+  TopProduct,
+  FeaturedProduct,
+  Section,
+} from '@/components'
+import clsx from 'clsx'
+import { useState } from 'react'
+import {
+  topProducts,
+  featuredProducts,
+  categories,
+} from '@/data/dummy-data'
+
+export function Home() {
+  const [category, setCategory] = useState('Headphone')
+
+  return (
+    <main className="flex flex-col h-screen text-sm">
+      <Nav className="px-4 py-4" />
+      <header className="px-6 mb-8">
+        <p>Hi, Andrea</p>
+        <h1 className="mt-2 text-2xl font-semibold">
+          What are you looking for today?
+        </h1>
+        <Input
+          type="search"
+          name="search"
+          placeholder="Search headphone"
+          icon={<Icon.Search />}
+          className="w-full py-3 mt-6 border border-gray-dark"
+        />
+      </header>
+
+      <Panel className="flex-1 px-6 py-4">
+        {/* TabsList */}
+        <List items={categories} classNmae="gap-4 py-4">
+          {(item) => (
+            <Badge
+              onClick={() => setCategory(item.name)}
+              className={clsx(
+                item.id === category
+                  ? 'text-white bg-primary'
+                  : 'text-gray-darker'
+              )}>
+              {item.name}
+            </Badge>
+          )}
+        </List>
+
+        {/* Product Card */}
+        <List items={topProducts} classNmae="gap-4 py-3">
+          {(item) => <TopProduct className="w-[80vw]" {...item} />}
+        </List>
+
+        {/* Features Products */}
+        <Section
+          title="Featured Products"
+          optional={
+            <a href="#showAll" className="text-xs text-gray-darker">
+              Show all
+            </a>
+          }>
+          <List items={featuredProducts} classNmae="gap-4 py-3">
+            {(item) => (
+              <FeaturedProduct className="w-[38vw]" {...item} />
+            )}
+          </List>
+        </Section>
+      </Panel>
+    </main>
+  )
+}
