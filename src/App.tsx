@@ -1,81 +1,39 @@
-import React, { ReactNode, isValidElement, cloneElement } from 'react'
-import clsx from 'clsx'
-import { Icon } from './components/Icon'
-
-type Props = {
-  type: 'email' | 'password'
-  name: string
-  placeholder: string
-  icon: ReactNode
-}
-
-function Input({ type, name, placeholder, icon }: Props) {
-  return (
-    <label
-      className={clsx(
-        'inline-flex items-center',
-        'bg-white',
-        'px-3 py-3',
-        'rounded-lg',
-        'focus-within:ring ring-primary'
-      )}>
-      {isValidElement(icon) &&
-        cloneElement(icon, { className: 'w-5 text-gray-dark' })}
-      <input
-        type={type}
-        name={name}
-        placeholder={placeholder}
-        className={clsx(
-          'w-full',
-          'outline-none',
-          'text-black placeholder-gray-dark'
-        )}
-      />
-    </label>
-  )
-}
+import { Icon, Input, Button } from '@/components'
+import { Auth as Layout } from '@/layouts'
 
 function App() {
   return (
-    <main
-      className={clsx(
-        'bg-auth h-screen p-8',
-        'flex flex-col',
-        'text-sm text-center text-white'
-      )}>
-      <header className="mt-20 space-y-4">
-        <h1 className="text-6xl">Audio</h1>
-        <p>It's modular and designed to last</p>
-      </header>
+    <Layout>
+      <div className="flex flex-col gap-5">
+        <Input
+          type="email"
+          name="email"
+          placeholder="Email"
+          icon={<Icon.Mail />}
+        />
+        <Input
+          type="password"
+          name="password"
+          placeholder="Password"
+          icon={<Icon.Lock />}
+        />
+      </div>
 
-      <form className="flex flex-col flex-1 mt-10">
-        <div className="flex flex-col gap-2">
-          <Input
-            type="email"
-            name="email"
-            placeholder="Email"
-            icon={<Icon.Mail />}
-          />
-          <Input
-            type="password"
-            name="password"
-            placeholder="Password"
-            icon={<Icon.Lock />}
-          />
-        </div>
+      <div className="py-6">
+        <a href="/">Forget Password</a>
+      </div>
 
-        <div>
-          <a href="/">Forget Password</a>
-        </div>
+      <Button>Sign In</Button>
 
-        <button>Sign In</button>
-
-        <p>
-          <span>Didn't have any account?</span>
-          <a href="/">Sign Up here</a>
-        </p>
-      </form>
-    </main>
+      <p className="mt-6 space-x-1">
+        <span className="font-light">Didn't have any account?</span>
+        <a
+          href="/"
+          className="font-normal border-b text-primary border-b-primary">
+          Sign Up here
+        </a>
+      </p>
+    </Layout>
   )
 }
 
