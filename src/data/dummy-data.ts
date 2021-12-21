@@ -56,3 +56,30 @@ export const featuredProducts = [
     price: 'USD 25',
   },
 ]
+
+export const popularProduct = [
+  {
+    id: 1,
+    name: 'TMA-2 Comfort Wireless',
+    price: 'USD 270',
+    rate: 4.6,
+    reviews: 86,
+    image: IMAGE.prod1,
+  },
+  {
+    id: 2,
+    name: 'TMA-2 DJ',
+    price: 'USD 199',
+    rate: 4.4,
+    reviews: 112,
+    image: IMAGE.prod2,
+  },
+  {
+    id: 3,
+    name: 'TMA-2 Move Wireless',
+    price: 'USD 135',
+    rate: 4.1,
+    reviews: 45,
+    image: IMAGE.prod3,
+  },
+]
