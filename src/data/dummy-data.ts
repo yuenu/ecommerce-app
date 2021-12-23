@@ -98,3 +98,14 @@ export const headerTab = [
     name: 'Most Expensive',
   },
 ]
+
+export const lastSearch = [
+  {
+    id: '1',
+    text: 'TMA2 Wireless',
+  },
+  {
+    if: '2',
+    text: 'Cable',
+  },
+]
