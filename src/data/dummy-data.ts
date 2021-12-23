@@ -83,3 +83,18 @@ export const popularProduct = [
     image: IMAGE.prod3,
   },
 ]
+
+export const headerTab = [
+  {
+    id: 1,
+    name: 'Popularity',
+  },
+  {
+    id: 2,
+    name: 'Newest',
+  },
+  {
+    id: 3,
+    name: 'Most Expensive',
+  },
+]

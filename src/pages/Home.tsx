@@ -8,6 +8,7 @@ import {
   TopProduct,
   FeaturedProduct,
   Section,
+  Avatar,
 } from '@/components'
 import clsx from 'clsx'
 import { useState } from 'react'
@@ -16,13 +17,24 @@ import {
   featuredProducts,
   categories,
 } from '@/data/dummy-data'
+import { Main } from '@/layouts'
 
 export function Home() {
   const [category, setCategory] = useState('Headphone')
 
   return (
-    <main className="flex flex-col h-screen text-sm">
-      <Nav className="px-4 py-4" />
+    <Main>
+      <Nav
+        className="px-4 py-4"
+        left={<Icon.MenuVariant className="w-5" />}
+        title={
+          <>
+            <Icon.Logo className="w-5" />
+            <strong className="text-lg">Audio</strong>
+          </>
+        }
+        right={<Avatar className="w-8" />}
+      />
       <header className="px-6 mb-8">
         <p>Hi, Andrea</p>
         <h1 className="mt-2 text-2xl font-semibold">
@@ -39,7 +51,7 @@ export function Home() {
 
       <Panel className="flex-1 px-6 py-4">
         {/* TabsList */}
-        <List items={categories} classNmae="gap-4 py-4">
+        <List items={categories} className="gap-4 py-4 flex-nowrap">
           {(item) => (
             <Badge
               onClick={() => setCategory(item.name)}
@@ -54,7 +66,7 @@ export function Home() {
         </List>
 
         {/* Product Card */}
-        <List items={topProducts} classNmae="gap-4 py-3">
+        <List items={topProducts} className="gap-4 py-3 flex-nowrap">
           {(item) => <TopProduct className="w-[80vw]" {...item} />}
         </List>
 
@@ -66,13 +78,15 @@ export function Home() {
               Show all
             </a>
           }>
-          <List items={featuredProducts} classNmae="gap-4 py-3">
+          <List
+            items={featuredProducts}
+            className="gap-4 py-3 flex-nowrap">
             {(item) => (
               <FeaturedProduct className="w-[38vw]" {...item} />
             )}
           </List>
         </Section>
       </Panel>
-    </main>
+    </Main>
   )
 }

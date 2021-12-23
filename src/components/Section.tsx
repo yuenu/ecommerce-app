@@ -1,11 +1,12 @@
 import { ReactNode } from 'react'
 import clsx from 'clsx'
+import { List } from '@/components'
 
 type SectionProps = {
   className?: string
   children?: ReactNode
   optional?: ReactNode
-  title: string
+  title?: string
 }
 
 export function Section({
@@ -23,6 +24,24 @@ export function Section({
       </header>
 
       {children}
+    </section>
+  )
+}
+
+type VerticalLayoutSectionProps = {
+  className?: string
+  children?: ReactNode
+  title?: string
+}
+
+export function VerticalLayoutSection({
+  className,
+  children,
+  title,
+}: VerticalLayoutSectionProps) {
+  return (
+    <section className="p-6">
+      <h2></h2>
     </section>
   )
 }
