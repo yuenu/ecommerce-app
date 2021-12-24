@@ -56,6 +56,7 @@ export function Home() {
             <Badge
               onClick={() => setCategory(item.name)}
               className={clsx(
+                'rounded-xl',
                 item.id === category
                   ? 'text-white bg-primary'
                   : 'text-gray-darker'

@@ -11,7 +11,7 @@ export function Badge({ children, className, onClick }: BadgeProps) {
   return (
     <button
       className={clsx(
-        'rounded-xl px-3 py-[0.1rem] font-light',
+        'px-3 py-[0.1rem] font-light',
         'ease-out duration-300',
         className
       )}

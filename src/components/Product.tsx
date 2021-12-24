@@ -44,7 +44,8 @@ export function FeaturedProduct({
   className,
 }: FeaturedProductProps) {
   return (
-    <Card className={clsx('flex p-3 flex-col gap-8', className)}>
+    <Card
+      className={clsx('flex p-3 flex-col gap-8 h-full', className)}>
       <div className="flex-1 px-3">
         <img src={img} alt="product" />
       </div>

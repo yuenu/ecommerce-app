@@ -1,5 +1,5 @@
-import { Search } from '@/pages'
+import { ProductDetail } from '@/pages'
 
 export default function App() {
-  return <Search />
+  return <ProductDetail />
 }

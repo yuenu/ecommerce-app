@@ -27,12 +27,12 @@ export const topProducts = [
   {
     id: '1',
     name: 'TMA-2 Modular Headphone',
-    img: IMAGE.prod2,
+    img: IMAGE.prod1,
   },
   {
     id: '2',
     name: 'C02 - Cable',
-    img: IMAGE.prod1,
+    img: IMAGE.prod3,
   },
 ]
 
@@ -132,5 +132,49 @@ export const shoppingCart = [
     amount: 1,
     price: 25,
     name: 'C02 - Cable',
+  },
+]
+
+export const reviewHeaderTab = [
+  {
+    id: 'overview',
+    name: 'Overview',
+  },
+  {
+    id: 'features',
+    name: 'Features',
+  },
+  {
+    id: 'specification',
+    name: 'Specification',
+  },
+]
+
+export const reivews = [
+  {
+    id: 1,
+    name: 'Madelina',
+    rate: 4,
+    createAt: '11 Days ago',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    images: [],
+  },
+  {
+    id: 2,
+    name: 'Irfan',
+    rate: 5,
+    createAt: '1 Month ago',
+    content:
+      'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+    images: [IMAGE.prod1, IMAGE.prod2, IMAGE.prod3],
+  },
+  {
+    id: 3,
+    name: 'MadeRavi Putralina',
+    rate: 3,
+    createAt: '2 Month ago',
+    content: 'Excepteur sint occaecat cupidatat non proident',
+    images: [],
   },
 ]
