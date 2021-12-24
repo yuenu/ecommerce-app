@@ -1,4 +1,10 @@
-import { Nav, Input, Icon, VerticalLayoutSection } from '@/components'
+import {
+  Nav,
+  Input,
+  Icon,
+  VerticalLayoutSection,
+  PopularProduct,
+} from '@/components'
 import { popularProduct, lastSearch } from '@/data/dummy-data'
 import { Main } from '@/layouts'
 
@@ -39,29 +45,7 @@ export function Search() {
 
       <VerticalLayoutSection title="Popular product">
         {popularProduct.map((item) => {
-          return (
-            <div className="flex gap-4 mb-5">
-              <div className="flex items-center justify-center w-20 h-20 bg-gray-100 rounded-xl">
-                <img className="w-14" src={item.image} alt="" />
-              </div>
-              <div className="flex-1">
-                <h4>{item.name}</h4>
-                <h5 className="font-bold">{item.price}</h5>
-                <footer className="flex items-center">
-                  <div className="flex items-center gap-1">
-                    <span className="text-yellow-400">
-                      <Icon.Star className="w-4 h-4" />
-                    </span>
-                    {item.rate}
-                  </div>
-                  <p className="ml-4">{item.reviews} Reviews</p>
-                  <button className="ml-auto">
-                    <Icon.MoreVertical className="w-5 h-5" />
-                  </button>
-                </footer>
-              </div>
-            </div>
-          )
+          return <PopularProduct {...item} />
         })}
       </VerticalLayoutSection>
     </Main>

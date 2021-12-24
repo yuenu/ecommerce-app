@@ -1,5 +1,5 @@
-import Profile from './pages/Profile'
+import { Search } from '@/pages'
 
 export default function App() {
-  return <Profile />
+  return <Search />
 }
