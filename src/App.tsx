@@ -1,5 +1,5 @@
-import { Explore, Home, Search } from './pages'
+import ShoppingCart from './pages/ShoppingCart'
 
 export default function App() {
-  return <Search />
+  return <ShoppingCart />
 }

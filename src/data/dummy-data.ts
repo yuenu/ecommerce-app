@@ -82,6 +82,14 @@ export const popularProduct = [
     reviews: 45,
     image: IMAGE.prod3,
   },
+  {
+    id: 4,
+    name: 'TMA-2 Move Wireless',
+    price: 'USD 135',
+    rate: 4.1,
+    reviews: 45,
+    image: IMAGE.prod3,
+  },
 ]
 
 export const headerTab = [
@@ -107,5 +115,22 @@ export const lastSearch = [
   {
     if: '2',
     text: 'Cable',
+  },
+]
+
+export const shoppingCart = [
+  {
+    id: 1,
+    image: IMAGE.prod1,
+    amount: 1,
+    price: 270,
+    name: 'TMA-2 Comfort Wireless',
+  },
+  {
+    id: 2,
+    image: IMAGE.prod3,
+    amount: 1,
+    price: 25,
+    name: 'C02 - Cable',
   },
 ]
