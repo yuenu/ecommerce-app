@@ -1,5 +1,5 @@
-import ShoppingCart from './pages/ShoppingCart'
+import Profile from './pages/Profile'
 
 export default function App() {
-  return <ShoppingCart />
+  return <Profile />
 }

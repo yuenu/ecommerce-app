@@ -6,7 +6,7 @@ type NavPrpos = {
   className?: string
   left: ReactNode
   title?: ReactNode | string
-  right: ReactNode
+  right?: ReactNode
 }
 
 export function Nav({ className, left, title, right }: NavPrpos) {
@@ -18,7 +18,9 @@ export function Nav({ className, left, title, right }: NavPrpos) {
       )}>
       <button className="p-2">{left}</button>
 
-      <span className="inline-flex gap-2">{title}</span>
+      <span className="inline-flex gap-2 text-base font-semibold">
+        {title}
+      </span>
 
       <button className="p-2">{right}</button>
     </nav>
