@@ -2,10 +2,10 @@ import clsx from 'clsx'
 import React, { ReactNode, isValidElement, cloneElement } from 'react'
 
 type Props = {
-  type: 'email' | 'password' | 'search'
+  type: 'email' | 'password' | 'search' | 'number'
   name: string
   placeholder: string
-  icon: ReactNode
+  icon?: ReactNode
   className?: string
 }
 

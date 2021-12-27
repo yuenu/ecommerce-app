@@ -53,7 +53,7 @@ export function ProductDetail() {
       </header>
 
       <section>
-        <div className="flex gap-5 px-6 overflow-auto flex-nowrap">
+        <div className="flex gap-5 px-6 flex-nowrap">
           <List
             items={topProducts}
             className="gap-4 py-3 flex-nowrap">

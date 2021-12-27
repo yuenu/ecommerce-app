@@ -1,5 +1,5 @@
-import { ProductDetail } from '@/pages'
+import { Explore } from '@/pages'
 
 export default function App() {
-  return <ProductDetail />
+  return <Explore />
 }
