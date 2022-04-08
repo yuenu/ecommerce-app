@@ -29,7 +29,8 @@ export function SignIn() {
         <span className="font-light">Didn't have any account?</span>
         <a
           href="/"
-          className="font-normal border-b text-primary border-b-primary">
+          className="font-normal border-b text-primary border-b-primary"
+        >
           Sign Up here
         </a>
       </p>

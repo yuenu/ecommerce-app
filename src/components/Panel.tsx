@@ -11,7 +11,8 @@ export function Panel({ children, className, style }: PanelProps) {
   return (
     <div
       className={clsx('bg-gray-lighter rounded-t-3xl', className)}
-      style={style}>
+      style={style}
+    >
       {children}
     </div>
   )

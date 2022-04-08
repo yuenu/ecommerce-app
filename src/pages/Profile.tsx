@@ -45,7 +45,8 @@ export default function Profile() {
                     className={clsx(
                       'border-0 border-b border-solid',
                       'py-3 block w-full text-left px-6'
-                    )}>
+                    )}
+                  >
                     {item}
                   </button>
                 )

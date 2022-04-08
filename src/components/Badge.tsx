@@ -15,7 +15,8 @@ export function Badge({ children, className, onClick }: BadgeProps) {
         'ease-out duration-300',
         className
       )}
-      onClick={onClick}>
+      onClick={onClick}
+    >
       {children}
     </button>
   )

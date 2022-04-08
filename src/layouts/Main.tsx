@@ -9,7 +9,8 @@ type Props = {
 export function Main({ children, className }: Props) {
   return (
     <main
-      className={clsx('flex flex-col h-screen text-sm', className)}>
+      className={clsx('flex flex-col h-screen text-sm', className)}
+    >
       {children}
     </main>
   )

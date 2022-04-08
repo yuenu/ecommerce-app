@@ -45,7 +45,8 @@ export function ProductDetail() {
                 item.id === tab
                   ? 'before:content-[""] before:bg-primary/80 before:w-2/5 before:h-[0.2rem] before:absolute before:-bottom-2 before:left-1/2 before:-translate-x-1/2'
                   : ''
-              )}>
+              )}
+            >
               {item.name}
             </Badge>
           )}
@@ -56,7 +57,8 @@ export function ProductDetail() {
         <div className="flex gap-5 px-6 flex-nowrap">
           <List
             items={topProducts}
-            className="gap-4 py-3 flex-nowrap">
+            className="gap-4 py-3 flex-nowrap"
+          >
             {(item) => (
               <Card className={clsx('w-[80vw] flex p-6 bg-gray-200')}>
                 <img
@@ -88,10 +90,12 @@ export function ProductDetail() {
               <a href="#showAll" className="text-xs text-gray-darker">
                 Show all
               </a>
-            }>
+            }
+          >
             <List
               items={featuredProducts}
-              className="gap-4 py-3 flex-nowrap">
+              className="gap-4 py-3 flex-nowrap"
+            >
               {(item) => (
                 <FeaturedProduct className="w-[38vw]" {...item} />
               )}

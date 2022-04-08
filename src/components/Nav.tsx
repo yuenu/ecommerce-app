@@ -12,10 +12,8 @@ type NavPrpos = {
 export function Nav({ className, left, title, right }: NavPrpos) {
   return (
     <nav
-      className={clsx(
-        'flex justify-between items-center',
-        className
-      )}>
+      className={clsx('flex justify-between items-center', className)}
+    >
       <button className="p-2">{left}</button>
 
       <span className="inline-flex gap-2 text-base font-semibold">

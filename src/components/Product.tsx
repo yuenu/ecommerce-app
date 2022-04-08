@@ -18,7 +18,8 @@ export function TopProduct({
         <h2 className="text-xl font-bold">{name}</h2>
         <a
           href="#shop"
-          className="inline-flex items-center gap-2 mt-auto font-medium text-primary">
+          className="inline-flex items-center gap-2 mt-auto font-medium text-primary"
+        >
           <span>Shop now</span>
           <Icon.ArrowRight />
         </a>
@@ -45,7 +46,8 @@ export function FeaturedProduct({
 }: FeaturedProductProps) {
   return (
     <Card
-      className={clsx('flex p-3 flex-col gap-8 h-full', className)}>
+      className={clsx('flex p-3 flex-col gap-8 h-full', className)}
+    >
       <div className="flex-1 px-3">
         <img src={img} alt="product" />
       </div>

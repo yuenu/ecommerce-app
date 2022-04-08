@@ -82,7 +82,8 @@ function FilterPanel({ onClose }: FilterPanelProps) {
       <ColumnSection title="Category" className="mb-3">
         <List
           items={categories}
-          className="gap-4 pt-3 pb-5 flex-nowrap">
+          className="gap-4 pt-3 pb-5 flex-nowrap"
+        >
           {(item) => (
             <Badge
               onClick={() => setCategory(item.name)}
@@ -91,7 +92,8 @@ function FilterPanel({ onClose }: FilterPanelProps) {
                 item.id === category
                   ? 'text-white bg-primary'
                   : 'text-gray-darker'
-              )}>
+              )}
+            >
               {item.name}
             </Badge>
           )}
@@ -150,14 +152,16 @@ export function Explore() {
             className={clsx(
               'py-2 px-3 border border-gray-300 rounded-lg',
               'flex items-center gap-2'
-            )}>
+            )}
+          >
             <Icon.Sliders className="w-5" />
             <span className="text-xs font-medium">Filter</span>
           </button>
           {/* TabsList */}
           <List
             items={headerTab}
-            className="gap-4 py-4 ml-4 flex-nowrap">
+            className="gap-4 py-4 ml-4 flex-nowrap"
+          >
             {(item) => (
               <Badge className="whitespace-nowrap">{item.name}</Badge>
             )}
@@ -171,7 +175,8 @@ export function Explore() {
           <Section className="pt-2 pb-8">
             <List
               items={popularProduct}
-              className="grid grid-cols-2 gap-4">
+              className="grid grid-cols-2 gap-4"
+            >
               {(item) => (
                 <AllProducts className="rounded-2xl " {...item} />
               )}

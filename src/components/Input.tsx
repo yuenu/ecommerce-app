@@ -25,7 +25,8 @@ export function Input({
         'rounded-lg',
         'focus-within:ring ring-primary',
         className
-      )}>
+      )}
+    >
       {isValidElement(icon) &&
         cloneElement(icon, { className: 'w-5 text-gray-dark' })}
       <input

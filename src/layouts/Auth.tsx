@@ -12,7 +12,8 @@ export function Auth({ children }: LayoutProps) {
         'bg-auth h-screen p-8 w-full',
         'flex flex-col',
         'text-sm text-center text-white'
-      )}>
+      )}
+    >
       <header className="mt-20 space-y-4">
         <h1 className="text-6xl">Audio</h1>
         <p>It's modular and designed to last</p>
