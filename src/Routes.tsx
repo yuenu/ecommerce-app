@@ -1,3 +1,5 @@
+import { Route, Routes } from 'react-router-dom'
+import Profile from '@/pages/Profile'
 import {
   Explore,
   Home,
@@ -7,8 +9,6 @@ import {
   SignIn,
   SignUp,
 } from '@/pages'
-import Profile from '@/pages/Profile'
-import { Route, Routes } from 'react-router-dom'
 
 export const IRoutes = () => {
   return (

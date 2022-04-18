@@ -7,6 +7,7 @@ type Props = {
   placeholder: string
   icon?: ReactNode
   className?: string
+  onChange?: React.ChangeEventHandler<HTMLInputElement>
 }
 
 export function Input({
@@ -15,6 +16,7 @@ export function Input({
   placeholder,
   icon,
   className,
+  onChange,
 }: Props) {
   return (
     <label
@@ -25,14 +27,14 @@ export function Input({
         'rounded-lg',
         'focus-within:ring ring-primary',
         className
-      )}
-    >
+      )}>
       {isValidElement(icon) &&
         cloneElement(icon, { className: 'w-5 text-gray-dark' })}
       <input
         type={type}
         name={name}
         placeholder={placeholder}
+        onChange={onChange}
         className={clsx(
           'w-full',
           'outline-none',
