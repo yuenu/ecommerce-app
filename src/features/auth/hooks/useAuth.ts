@@ -4,6 +4,7 @@ import { SignInDetails } from '../types'
 import { authServerCall } from '../api'
 import { UserCredential } from 'firebase/auth'
 
+// TODO: change the firebase/auth to OAuth
 const useAuth = ({
   email,
   password,
@@ -17,6 +18,7 @@ const useAuth = ({
     setIsLoading(true)
     authServerCall({ email, password, action })
       .then((res) => {
+        console.log('res:', res)
         setUser(res.user)
         navigate('/')
         setIsLoading(false)

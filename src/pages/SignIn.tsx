@@ -13,6 +13,7 @@ export function SignIn() {
     action: 'signIn',
   })
 
+  console.log('user:', user)
   const onSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault()
     // setIsLoading(true)
