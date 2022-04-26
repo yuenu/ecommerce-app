@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { SignInDetails } from '../types'
 import { authServerCall } from '../api'
@@ -10,13 +10,14 @@ const useAuth = ({
   password,
   action = 'signIn',
 }: SignInDetails) => {
+  let navigate = useNavigate()
+  const [fetcher, setFetcher] = useState(false)
   const [user, setUser] = useState<UserCredential['user']>()
   const [isLoading, setIsLoading] = useState(false)
-  let navigate = useNavigate()
 
-  useEffect(() => {
+  const authAction = useCallback(async () => {
     setIsLoading(true)
-    authServerCall({ email, password, action })
+    await authServerCall({ email, password, action })
       .then((res) => {
         console.log('res:', res)
         setUser(res.user)
@@ -29,9 +30,19 @@ const useAuth = ({
       })
   }, [email, password, action, navigate])
 
+  useEffect(() => {
+    if (fetcher) authAction()
+    return () => setFetcher(false)
+  }, [fetcher, authAction])
+
+  const onSubmitUserInfo = () => {
+    setFetcher(true)
+  }
+
   return {
-    isLoading,
     user,
+    isLoading,
+    onSubmitUserInfo,
   }
 }
 

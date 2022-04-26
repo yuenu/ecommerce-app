@@ -7,30 +7,16 @@ import useAuth from '@/features/auth/hooks/useAuth'
 export function SignIn() {
   const [registerEmail, setRegisterEmail] = useState('')
   const [registerPassword, setRegisterPassword] = useState('')
-  const { user, isLoading } = useAuth({
+  const { isLoading, onSubmitUserInfo } = useAuth({
     email: registerEmail,
     password: registerPassword,
     action: 'signIn',
   })
 
-  console.log('user:', user)
   const onSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault()
-    // setIsLoading(true)
-    // try {
-    //   const user = await signInWithEmailAndPassword(
-    //     auth,
-    //     registerEmail,
-    //     registerPassword
-    //   )
-
-    //   console.log(user)
-    // } catch (e) {
-    //   console.log(e)
-    // } finally {
-    //   setIsLoading(false)
-    //   navigate('/')
-    // }
+    console.log('submit', registerEmail, registerPassword)
+    onSubmitUserInfo()
   }
   return (
     <Layout>

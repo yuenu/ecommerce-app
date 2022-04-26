@@ -2,30 +2,22 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Auth as Layout } from '@/layouts'
 import { Icon, Input, Button, SocialMedia } from '@/components'
-import { createUserWithEmailAndPassword } from '@firebase/auth'
-import { auth } from '@/firebase'
+import useAuth from '@/features/auth/hooks/useAuth'
 
 export function SignUp() {
   const [registerEmail, setRegisterEmail] = useState('')
   const [registerPassword, setRegisterPassword] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
+  // const [isLoading, setIsLoading] = useState(false)
+  const { isLoading, onSubmitUserInfo } = useAuth({
+    email: registerEmail,
+    password: registerPassword,
+    action: 'signUp',
+  })
 
   const onSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault()
     console.log('submit', registerEmail, registerPassword)
-    setIsLoading(true)
-    try {
-      const user = await createUserWithEmailAndPassword(
-        auth,
-        registerEmail,
-        registerPassword
-      )
-      console.log(user)
-    } catch (e) {
-      console.log(e)
-    } finally {
-      setIsLoading(false)
-    }
+    onSubmitUserInfo()
   }
 
   return (
