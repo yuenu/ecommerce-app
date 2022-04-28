@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { ToastOptions } from '../types'
+import { ToastOptions } from '@/types'
 
 export type ToastState = {
   toastOptions: ToastOptions | null

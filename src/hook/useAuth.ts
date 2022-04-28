@@ -1,8 +1,10 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { SignInDetails } from '../types'
-import { authServerCall } from '../api'
-import { UserCredential } from 'firebase/auth'
+import { SignInDetails } from '@/types'
+import { authServerCall } from '@/api'
+import type { UserCredential } from 'firebase/auth'
+import { startSignIn, signIn, endSignIn } from '@/slice/auth'
+import { useAppDispatch } from '@/slice'
 
 // TODO: change the firebase/auth to OAuth
 const useAuth = ({
@@ -10,25 +12,28 @@ const useAuth = ({
   password,
   action = 'signIn',
 }: SignInDetails) => {
+  const dispatch = useAppDispatch()
   let navigate = useNavigate()
   const [fetcher, setFetcher] = useState(false)
-  const [user, setUser] = useState<UserCredential['user']>()
   const [isLoading, setIsLoading] = useState(false)
 
   const authAction = useCallback(async () => {
+    dispatch(startSignIn())
     setIsLoading(true)
     await authServerCall({ email, password, action })
-      .then((res) => {
+      .then((res: UserCredential) => {
         console.log('res:', res)
-        setUser(res.user)
+        dispatch(signIn(res.user))
         navigate('/')
+        dispatch(endSignIn())
         setIsLoading(false)
       })
-      .catch((e) => {
+      .catch((e: any) => {
         console.log(e)
+        dispatch(endSignIn())
         setIsLoading(false)
       })
-  }, [email, password, action, navigate])
+  }, [dispatch, email, password, action, navigate])
 
   useEffect(() => {
     if (fetcher) authAction()
@@ -40,7 +45,6 @@ const useAuth = ({
   }
 
   return {
-    user,
     isLoading,
     onSubmitUserInfo,
   }

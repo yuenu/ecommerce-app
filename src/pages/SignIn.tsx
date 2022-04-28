@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Icon, Input, Button } from '@/components'
 import { Auth as Layout } from '@/layouts'
-import useAuth from '@/features/auth/hooks/useAuth'
+import useAuth from '@/hook/useAuth'
 
 export function SignIn() {
   const [registerEmail, setRegisterEmail] = useState('')

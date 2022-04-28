@@ -1,10 +1,10 @@
-import { IRoutes } from './Routes'
-import Toast from './features/toast'
+import { RootRoutes } from './Routes'
+import { Toast } from '@/components'
 
 export default function App() {
   return (
     <>
-      <IRoutes />
+      <RootRoutes />
       <Toast title="Error Message" status="error" />
     </>
   )

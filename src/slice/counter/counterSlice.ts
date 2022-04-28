@@ -3,7 +3,7 @@ import {
   createSlice,
   PayloadAction,
 } from '@reduxjs/toolkit'
-import { RootState, AppThunk } from '../../app/store'
+import { RootState, AppThunk } from '@/slice'
 import { fetchCount } from './counterAPI'
 
 export interface CounterState {

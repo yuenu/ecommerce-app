@@ -2,10 +2,6 @@ export type AuthenticateAction = 'signIn' | 'signUp'
 
 export type SignInStatus = 'idle' | 'pending'
 
-export type LoggedInUser = {
-  userToken?: string
-} & User
-
 export interface SignInDetails {
   email: string
   password: string
@@ -35,4 +31,9 @@ export interface User {
 export interface AuthResponse {
   kind: string
   users: User[]
+}
+
+export interface ToastOptions {
+  title: string
+  status: 'error' | 'info' | 'warning' | 'success' | undefined
 }
