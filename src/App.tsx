@@ -5,7 +5,7 @@ export default function App() {
   return (
     <>
       <RootRoutes />
-      <Toast title="Unexpect Error" status="error" />
+      <Toast />
     </>
   )
 }

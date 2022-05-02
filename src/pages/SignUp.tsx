@@ -7,7 +7,7 @@ import useAuth from '@/hook/useAuth'
 export function SignUp() {
   const [registerEmail, setRegisterEmail] = useState('')
   const [registerPassword, setRegisterPassword] = useState('')
-  const { isLoading, onSubmitUserInfo } = useAuth({
+  const { isLoading, onSubmit: onSubmitUserInfo } = useAuth({
     email: registerEmail,
     password: registerPassword,
     action: 'signUp',

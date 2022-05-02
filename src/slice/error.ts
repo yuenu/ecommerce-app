@@ -1,15 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { FirebaseError } from 'firebase/app'
 
-type IState = FirebaseError & {
-  visiable?: boolean
-}
-
-const initialState: IState = {
+const initialState = {
+  visible: false,
   code: '',
-  name: '',
+  status: '',
+  type: '',
   message: '',
-  visiable: false,
 }
 
 const errorSlice = createSlice({
@@ -20,7 +17,7 @@ const errorSlice = createSlice({
       return { ...state, message: action.payload }
     },
     setAPIError: (state, action: PayloadAction<FirebaseError>) => {
-      return { ...state, ...action.payload }
+      return { ...state, message: action.payload.code }
     },
     clearError: (_state, _action) => {
       return initialState

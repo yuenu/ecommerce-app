@@ -1,12 +1,13 @@
 import { Icon } from '@/components'
 import clsx from 'clsx'
-import { ToastOptions } from '@/types'
 import { useAppSelector, useAppDispatch } from '@/slice'
 import { signOut } from '@/slice/auth'
 
-export const Toast = ({ title }: ToastOptions) => {
+export const Toast = () => {
   const dispatch = useAppDispatch()
-  const { code } = useAppSelector((state) => state.error)
+  const { message, visible } = useAppSelector((state) => state.toast)
+
+  if (!visible) return null
   return (
     <div
       className={clsx(
@@ -16,7 +17,7 @@ export const Toast = ({ title }: ToastOptions) => {
         'bg-amber-600 text-white'
       )}>
       <Icon.AlertCircle />
-      {title}
+      {message}
       <button type="button" onClick={() => dispatch(signOut())}>
         SingOut
       </button>

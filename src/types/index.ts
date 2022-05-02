@@ -34,6 +34,6 @@ export interface AuthResponse {
 }
 
 export interface ToastOptions {
-  title: string
-  status: 'error' | 'info' | 'warning' | 'success' | undefined
+  message: string
+  type: 'error' | 'info' | 'warning' | 'success' | undefined
 }
