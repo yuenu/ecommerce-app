@@ -4,7 +4,9 @@ import { SignInDetails } from '@/types'
 import { authServerCall } from '@/api'
 import type { UserCredential } from 'firebase/auth'
 import { startSignIn, signIn, endSignIn } from '@/slice/auth'
+import { setAPIError } from '@/slice/error'
 import { useAppDispatch } from '@/slice'
+import { FirebaseError } from 'firebase/app'
 
 // TODO: change the firebase/auth to OAuth
 const useAuth = ({
@@ -22,14 +24,14 @@ const useAuth = ({
     setIsLoading(true)
     await authServerCall({ email, password, action })
       .then((res: UserCredential) => {
-        console.log('res:', res)
+        console.log('success login:', res)
         dispatch(signIn(res.user))
-        navigate('/')
         dispatch(endSignIn())
+        navigate('/')
         setIsLoading(false)
       })
-      .catch((e: any) => {
-        console.log(e)
+      .catch((error: FirebaseError) => {
+        dispatch(setAPIError(error))
         dispatch(endSignIn())
         setIsLoading(false)
       })

@@ -31,13 +31,16 @@ const getInitialState = (): AuthState => {
     isAuthenticated: false,
   }
   const storedUser = getStoredUser()
-  if (storedUser) initialState.user = storedUser
+  if (storedUser) {
+    initialState.user = storedUser
+    initialState.isAuthenticated = true
+  }
   return initialState
 }
 
 const initialState = getInitialState()
 
-export const authSlice = createSlice({
+const authSlice = createSlice({
   name: 'authentication',
   initialState,
   reducers: {
@@ -46,6 +49,7 @@ export const authSlice = createSlice({
       state.signInStatus = 'idle'
       state.user = action.payload
       setStoredUser(action.payload)
+      storeItem('isAuthenticated', 'true')
       state.isAuthenticated = true
     },
     signOut: (state) => {

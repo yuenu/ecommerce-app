@@ -7,12 +7,14 @@ import {
 import counterReducer from './counter/counterSlice'
 import AuthReducer from './auth'
 import ToastReducer from './toast'
+import ErrorReducer from './error'
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
     auth: AuthReducer,
     toast: ToastReducer,
+    error: ErrorReducer,
   },
   // TODO: fixed the issue:
   middleware: (getDefaultMiddleware) =>

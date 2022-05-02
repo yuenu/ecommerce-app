@@ -1,11 +1,12 @@
 import { Icon } from '@/components'
 import clsx from 'clsx'
 import { ToastOptions } from '@/types'
-import { useAppDispatch } from '@/slice'
+import { useAppSelector, useAppDispatch } from '@/slice'
 import { signOut } from '@/slice/auth'
 
 export const Toast = ({ title }: ToastOptions) => {
   const dispatch = useAppDispatch()
+  const { code } = useAppSelector((state) => state.error)
   return (
     <div
       className={clsx(

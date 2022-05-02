@@ -9,7 +9,8 @@ import {
   SignIn,
   SignUp,
 } from '@/pages'
-import { useAppSelector } from '@/slice'
+import { useAppDispatch, useAppSelector } from '@/slice'
+import { setError } from '@/slice/error'
 
 type RoutesType = { isAuth: boolean }
 
@@ -18,6 +19,8 @@ const SignInRoutes = ({ isAuth }: RoutesType) => {
 }
 
 const ProtectedRoutes = ({ isAuth }: RoutesType) => {
+  const dispatch = useAppDispatch()
+  if (!isAuth) dispatch(setError('Please Login first'))
   return isAuth ? <Outlet /> : <Navigate to="/signin" />
 }
 
