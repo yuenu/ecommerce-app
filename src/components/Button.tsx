@@ -34,15 +34,22 @@ export function Button({
 
 type SocialMediaProps = {
   children?: ReactNode
+  onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
-export function SocialMedia({ children }: SocialMediaProps) {
+export function SocialMedia({
+  children,
+  onClick,
+  ...rest
+}: SocialMediaProps) {
   return (
     <button
       className={clsx(
         'p-3 bg-white rounded-lg w-12 h-12',
         'inline-block items-center justify-center'
-      )}>
+      )}
+      onClick={onClick}
+      {...rest}>
       {isValidElement(children) &&
         cloneElement(children, { className: 'w-full h-full' })}
     </button>

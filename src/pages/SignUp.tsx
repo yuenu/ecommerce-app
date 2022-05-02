@@ -1,10 +1,20 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { Auth as Layout } from '@/layouts'
 import { Icon, Input, Button, SocialMedia } from '@/components'
 import useAuth from '@/hook/useAuth'
+import {
+  signInWithRedirect,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+} from 'firebase/auth'
+import { auth } from '@/firebase'
+import { useAppDispatch } from '@/slice'
+import { endSignIn, signIn } from '@/slice/auth'
 
 export function SignUp() {
+  const dispatch = useAppDispatch()
+  let navigate = useNavigate()
   const [registerEmail, setRegisterEmail] = useState('')
   const [registerPassword, setRegisterPassword] = useState('')
   const { isLoading, onSubmit: onSubmitUserInfo } = useAuth({
@@ -18,6 +28,28 @@ export function SignUp() {
     console.log('submit', registerEmail, registerPassword)
     onSubmitUserInfo()
   }
+
+  // Third party signin
+  // TODO: connect with facebook & apple (or github) sign in
+  const onSignInWithGoogle = (
+    e: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    e.preventDefault()
+    const googleProvider = new GoogleAuthProvider()
+    signInWithRedirect(auth, googleProvider)
+  }
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user && !user.isAnonymous) {
+        dispatch(signIn(user))
+        dispatch(endSignIn())
+        navigate('/')
+      }
+    })
+
+    return unsubscribe
+  }, [dispatch, navigate])
 
   return (
     <Layout>
@@ -55,7 +87,7 @@ export function SignUp() {
           <Icon.Facebook />
         </SocialMedia>
 
-        <SocialMedia>
+        <SocialMedia onClick={onSignInWithGoogle}>
           <Icon.Google />
         </SocialMedia>
       </div>
