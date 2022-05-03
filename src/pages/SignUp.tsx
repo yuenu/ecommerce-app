@@ -3,14 +3,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Auth as Layout } from '@/layouts'
 import { Icon, Input, Button, SocialMedia } from '@/components'
 import useAuth from '@/hook/useAuth'
-import {
-  signInWithRedirect,
-  GoogleAuthProvider,
-  onAuthStateChanged,
-} from 'firebase/auth'
+import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '@/firebase'
 import { useAppDispatch } from '@/slice'
 import { endSignIn, signIn } from '@/slice/auth'
+import { thirdPartySignup } from '@/api'
+import { ThirdPartySignup } from '@/types'
 
 export function SignUp() {
   const dispatch = useAppDispatch()
@@ -23,7 +21,7 @@ export function SignUp() {
     action: 'signUp',
   })
 
-  const onSubmit = async (e: React.SyntheticEvent) => {
+  const onSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     console.log('submit', registerEmail, registerPassword)
     onSubmitUserInfo()
@@ -31,12 +29,12 @@ export function SignUp() {
 
   // Third party signin
   // TODO: connect with facebook & apple (or github) sign in
-  const onSignInWithGoogle = (
-    e: React.MouseEvent<HTMLButtonElement>
+  const onSignInWithThirdParty = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    type: ThirdPartySignup
   ) => {
     e.preventDefault()
-    const googleProvider = new GoogleAuthProvider()
-    signInWithRedirect(auth, googleProvider)
+    thirdPartySignup(type)
   }
 
   useEffect(() => {
@@ -79,15 +77,18 @@ export function SignUp() {
       </Button>
 
       <div className="flex justify-center gap-4 my-8">
-        <SocialMedia>
+        <SocialMedia
+          onClick={(e) => onSignInWithThirdParty(e, 'github')}>
           <Icon.Apple />
         </SocialMedia>
 
-        <SocialMedia>
+        <SocialMedia
+          onClick={(e) => onSignInWithThirdParty(e, 'facebook')}>
           <Icon.Facebook />
         </SocialMedia>
 
-        <SocialMedia onClick={onSignInWithGoogle}>
+        <SocialMedia
+          onClick={(e) => onSignInWithThirdParty(e, 'google')}>
           <Icon.Google />
         </SocialMedia>
       </div>

@@ -4,9 +4,8 @@ import { SignInDetails } from '@/types'
 import { authServerCall } from '@/api'
 import type { UserCredential, AuthError } from 'firebase/auth'
 import { useAppDispatch } from '@/slice'
-import { setAPIError } from '@/slice/error'
+import { showError } from '@/slice/error'
 import { startSignIn, signIn, endSignIn } from '@/slice/auth'
-import { showToast, hideToast } from '@/slice/toast'
 
 // TODO: change the firebase/auth to OAuth
 const useAuth = ({
@@ -30,11 +29,7 @@ const useAuth = ({
         navigate('/')
       })
       .catch((error: AuthError) => {
-        dispatch(setAPIError(error))
-        dispatch(showToast({ message: error.code, type: 'error' }))
-        setTimeout(() => {
-          dispatch(hideToast())
-        }, 2000)
+        dispatch(showError(error))
         dispatch(endSignIn())
       })
     setIsLoading(false)

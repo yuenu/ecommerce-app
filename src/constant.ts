@@ -5,3 +5,9 @@ export enum endpoints {
   signUp = 'user',
   shows = 'shows',
 }
+
+export const THIRD_PARTY_SIGN_TYPE = {
+  GOOGLE: 'google',
+  FACEBOOK: 'facebook',
+  GITHUB: 'github',
+}

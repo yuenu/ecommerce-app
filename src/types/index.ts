@@ -8,6 +8,7 @@ export interface SignInDetails {
   action: AuthenticateAction
 }
 
+export type ThirdPartySignup = 'google' | 'facebook' | 'github'
 export interface ProviderUserInfo {
   providerId: string
   federatedId: string

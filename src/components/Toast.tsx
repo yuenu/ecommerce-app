@@ -7,7 +7,7 @@ export const Toast = () => {
   const dispatch = useAppDispatch()
   const { message, visible } = useAppSelector((state) => state.toast)
 
-  if (!visible) return null
+  // if (!visible) return null
   return (
     <div
       className={clsx(
