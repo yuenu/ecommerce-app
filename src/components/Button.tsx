@@ -34,19 +34,22 @@ export function Button({
 
 type SocialMediaProps = {
   children?: ReactNode
+  className?: string
   onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
 export function SocialMedia({
   children,
   onClick,
+  className,
   ...rest
 }: SocialMediaProps) {
   return (
     <button
       className={clsx(
         'p-3 bg-white rounded-lg w-12 h-12',
-        'inline-block items-center justify-center'
+        'inline-block items-center justify-center',
+        className
       )}
       onClick={onClick}
       {...rest}>

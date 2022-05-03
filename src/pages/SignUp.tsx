@@ -78,8 +78,9 @@ export function SignUp() {
 
       <div className="flex justify-center gap-4 my-8">
         <SocialMedia
+          className="text-black"
           onClick={(e) => onSignInWithThirdParty(e, 'github')}>
-          <Icon.Apple />
+          <Icon.GitHub />
         </SocialMedia>
 
         <SocialMedia
