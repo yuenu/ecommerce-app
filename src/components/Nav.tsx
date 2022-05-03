@@ -87,7 +87,7 @@ function SidePanel({ isOpen, onClose }: SidePanelType) {
     <div
       className={clsx(
         'fixed inset-0 w-screen h-screen',
-        isOpen ? 'bg-black/80' : 'transparent'
+        isOpen ? 'bg-black/80 z-auto' : 'transparent z-[-1]'
       )}>
       <div
         className={clsx(
