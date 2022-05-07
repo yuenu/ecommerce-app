@@ -24,6 +24,7 @@ export default function Profile() {
         className="px-4 py-4"
         left={<Icon.ArrowLeft />}
         title="Profile"
+        onLeftClickType="back"
       />
       <header className="flex items-center gap-8 p-6 border-0 border-b border-solid">
         <Avatar className="w-20" />
@@ -45,8 +46,7 @@ export default function Profile() {
                     className={clsx(
                       'border-0 border-b border-solid',
                       'py-3 block w-full text-left px-6'
-                    )}
-                  >
+                    )}>
                     {item}
                   </button>
                 )

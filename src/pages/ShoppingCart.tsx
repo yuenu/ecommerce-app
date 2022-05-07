@@ -19,6 +19,7 @@ export function ShoppingCart() {
         left={<Icon.ArrowLeft className="w-5" />}
         right={<Icon.Trash2 className="w-5" />}
         title="Shopping Cart"
+        onLeftClickType="back"
       />
       <section className="flex-1 px-6 mt-6">
         <List items={cartData} className="flex flex-col gap-8">

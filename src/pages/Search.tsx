@@ -16,6 +16,8 @@ export function Search() {
         left={<Icon.ArrowLeft className="w-5" />}
         title={'Search'}
         right={<Icon.ShoppingCart />}
+        onLeftClickType="back"
+        onRightClickType="go-cart"
       />
       <header className="px-6">
         <Input
@@ -29,8 +31,7 @@ export function Search() {
 
       <VerticalLayoutSection
         title="Lastest search"
-        className="mb-5 mt-7"
-      >
+        className="mb-5 mt-7">
         {lastSearch.map((item) => {
           return (
             <div className="flex items-center gap-3 py-2">

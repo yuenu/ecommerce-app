@@ -10,13 +10,33 @@ type NavPrpos = {
   left: ReactNode
   title?: ReactNode | string
   right?: ReactNode
+  onRightClickType?: 'profile' | 'go-cart' | 'delete-cart'
+  onLeftClickType?: 'toggle-sidepanel' | 'back'
 }
 
-export function Nav({ className, left, title, right }: NavPrpos) {
+export function Nav({
+  className,
+  left,
+  title,
+  right,
+  onRightClickType,
+  onLeftClickType,
+}: NavPrpos) {
   let navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
 
-  const onToggle = () => setIsOpen((prev) => !prev)
+  const onLeftClick = () => {
+    if (onLeftClickType === 'toggle-sidepanel')
+      setIsOpen((prev) => !prev)
+
+    if (onLeftClickType === 'back') navigate(-1)
+  }
+
+  const onRightClick = () => {
+    if (onRightClickType === 'profile') navigate('/profile')
+    if (onRightClickType === 'go-cart') navigate('/shopping-cart')
+  }
+
   const onClose = () => setIsOpen(false)
 
   const onShopping = () => navigate('/shopping-cart')
@@ -27,7 +47,7 @@ export function Nav({ className, left, title, right }: NavPrpos) {
         'flex justify-between items-center',
         className
       )}>
-      <button className="z-20 p-2" onClick={onToggle}>
+      <button className="z-20 p-2" onClick={onLeftClick}>
         {left}
       </button>
       <SidePanel isOpen={isOpen} onClose={onClose} />
@@ -36,7 +56,7 @@ export function Nav({ className, left, title, right }: NavPrpos) {
         {title}
       </span>
 
-      <button className="p-2" onClick={onShopping}>
+      <button className="p-2" onClick={onRightClick}>
         {right}
       </button>
     </nav>

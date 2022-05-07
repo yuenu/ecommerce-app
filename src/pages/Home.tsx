@@ -34,6 +34,8 @@ export function Home() {
           </>
         }
         right={<Avatar className="w-8" />}
+        onLeftClickType="toggle-sidepanel"
+        onRightClickType="profile"
       />
       <header className="px-6 mb-8">
         <p>Hi, Andrea</p>
@@ -60,8 +62,7 @@ export function Home() {
                 item.id === category
                   ? 'text-white bg-primary'
                   : 'text-gray-darker'
-              )}
-            >
+              )}>
               {item.name}
             </Badge>
           )}
@@ -79,12 +80,10 @@ export function Home() {
             <a href="#showAll" className="text-xs text-gray-darker">
               Show all
             </a>
-          }
-        >
+          }>
           <List
             items={featuredProducts}
-            className="gap-4 py-3 flex-nowrap"
-          >
+            className="gap-4 py-3 flex-nowrap">
             {(item) => (
               <FeaturedProduct className="w-[38vw]" {...item} />
             )}
