@@ -1,7 +1,7 @@
 // import { Icon, Avatar } from '@/components'
 import { ReactNode, useState } from 'react'
 import clsx from 'clsx'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '@/slice'
 import { signOut } from '@/slice/auth'
 
@@ -13,10 +13,13 @@ type NavPrpos = {
 }
 
 export function Nav({ className, left, title, right }: NavPrpos) {
+  let navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
 
   const onToggle = () => setIsOpen((prev) => !prev)
   const onClose = () => setIsOpen(false)
+
+  const onShopping = () => navigate('/shopping-cart')
 
   return (
     <nav
@@ -33,7 +36,9 @@ export function Nav({ className, left, title, right }: NavPrpos) {
         {title}
       </span>
 
-      <button className="p-2">{right}</button>
+      <button className="p-2" onClick={onShopping}>
+        {right}
+      </button>
     </nav>
   )
 }
@@ -87,7 +92,7 @@ function SidePanel({ isOpen, onClose }: SidePanelType) {
     <div
       className={clsx(
         'fixed inset-0 w-screen h-screen',
-        isOpen ? 'bg-black/80 z-auto' : 'transparent z-[-1]'
+        isOpen ? 'bg-black/80 z-10' : 'transparent z-[-1]'
       )}>
       <div
         className={clsx(

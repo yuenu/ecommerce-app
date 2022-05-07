@@ -1,10 +1,8 @@
-import { Icon } from '@/components'
 import clsx from 'clsx'
-import { useAppSelector, useAppDispatch } from '@/slice'
-import { signOut } from '@/slice/auth'
+import { Icon } from '@/components'
+import { useAppSelector } from '@/slice'
 
 export const Toast = () => {
-  const dispatch = useAppDispatch()
   const { message, visible } = useAppSelector((state) => state.toast)
 
   if (!visible) return null
@@ -18,9 +16,6 @@ export const Toast = () => {
       )}>
       <Icon.AlertCircle />
       {message}
-      <button type="button" onClick={() => dispatch(signOut())}>
-        SingOut
-      </button>
     </div>
   )
 }

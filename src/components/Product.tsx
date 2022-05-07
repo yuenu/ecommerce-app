@@ -18,8 +18,7 @@ export function TopProduct({
         <h2 className="text-xl font-bold">{name}</h2>
         <a
           href="#shop"
-          className="inline-flex items-center gap-2 mt-auto font-medium text-primary"
-        >
+          className="inline-flex items-center gap-2 mt-auto font-medium text-primary">
           <span>Shop now</span>
           <Icon.ArrowRight />
         </a>
@@ -46,8 +45,7 @@ export function FeaturedProduct({
 }: FeaturedProductProps) {
   return (
     <Card
-      className={clsx('flex p-3 flex-col gap-8 h-full', className)}
-    >
+      className={clsx('flex p-3 flex-col gap-8 h-full', className)}>
       <div className="flex-1 px-3">
         <img src={img} alt="product" />
       </div>
@@ -149,19 +147,23 @@ export function PopularProduct({
 }
 
 type CartProductProps = {
+  id: number
   image: string
   name: string
   price: number
   amount: number
   className?: string
+  deleteItem: (itemId: number) => void
 }
 
 export function CartProduct({
+  id,
   image,
   name,
   price,
   amount,
   className,
+  deleteItem,
 }: CartProductProps) {
   return (
     <Card className={clsx('flex gap-3', className)}>
@@ -181,7 +183,9 @@ export function CartProduct({
               <Icon.Plus className="w-4" />
             </button>
           </div>
-          <button className="ml-auto text-gray-500">
+          <button
+            className="ml-auto text-gray-500"
+            onClick={() => deleteItem(id)}>
             <Icon.Trash2 className="w-5" />
           </button>
         </div>

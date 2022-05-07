@@ -19,10 +19,10 @@
     background-color: #fff;
   }
 }
-
+/* 
 .toast {
   font-family: 'Unica One', cursive;
-}
+} */
 
 .bg-auth {
   background-image: url(@/assets/images/bg.jpg);

@@ -1,8 +1,17 @@
+import { useState } from 'react'
 import { Main } from '@/layouts'
 import { Icon, Nav, List, Button, CartProduct } from '@/components'
 import { shoppingCart } from '@/data/dummy-data'
 
 export function ShoppingCart() {
+  const [cartData, setCartData] = useState(shoppingCart)
+
+  const deleteItemFromCart = (itemId: number) => {
+    setCartData((prev) => {
+      return prev.filter((item) => item.id !== itemId)
+    })
+  }
+
   return (
     <Main>
       <Nav
@@ -12,8 +21,10 @@ export function ShoppingCart() {
         title="Shopping Cart"
       />
       <section className="flex-1 px-6 mt-6">
-        <List items={shoppingCart} className="flex flex-col gap-8">
-          {(item) => <CartProduct {...item} />}
+        <List items={cartData} className="flex flex-col gap-8">
+          {(item) => (
+            <CartProduct {...item} deleteItem={deleteItemFromCart} />
+          )}
         </List>
       </section>
       <footer className="p-6">
