@@ -8,12 +8,14 @@ import counterReducer from './counter/counterSlice'
 import AuthReducer from './auth'
 import ToastReducer from './toast'
 import ErrorReducer from './error'
+import CartReducer from './cart'
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
     auth: AuthReducer,
     toast: ToastReducer,
+    cart: CartReducer,
     error: ErrorReducer,
   },
   // TODO: fixed the issue:

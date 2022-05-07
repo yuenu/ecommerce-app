@@ -4,13 +4,14 @@ import clsx from 'clsx'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '@/slice'
 import { signOut } from '@/slice/auth'
+import { resetCart } from '@/slice/cart'
 
 type NavPrpos = {
   className?: string
   left: ReactNode
   title?: ReactNode | string
   right?: ReactNode
-  onRightClickType?: 'profile' | 'go-cart' | 'delete-cart'
+  onRightClickType?: 'profile' | 'go-cart' | 'reset-cart'
   onLeftClickType?: 'toggle-sidepanel' | 'back'
 }
 
@@ -23,6 +24,7 @@ export function Nav({
   onLeftClickType,
 }: NavPrpos) {
   let navigate = useNavigate()
+  const dispatch = useAppDispatch()
   const [isOpen, setIsOpen] = useState(false)
 
   const onLeftClick = () => {
@@ -35,11 +37,10 @@ export function Nav({
   const onRightClick = () => {
     if (onRightClickType === 'profile') navigate('/profile')
     if (onRightClickType === 'go-cart') navigate('/shopping-cart')
+    if (onRightClickType === 'reset-cart') dispatch(resetCart())
   }
 
   const onClose = () => setIsOpen(false)
-
-  const onShopping = () => navigate('/shopping-cart')
 
   return (
     <nav

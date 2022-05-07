@@ -154,6 +154,7 @@ type CartProductProps = {
   amount: number
   className?: string
   deleteItem: (itemId: number) => void
+  changleAmount: (id: number, amount: number) => void
 }
 
 export function CartProduct({
@@ -164,6 +165,7 @@ export function CartProduct({
   amount,
   className,
   deleteItem,
+  changleAmount,
 }: CartProductProps) {
   return (
     <Card className={clsx('flex gap-3', className)}>
@@ -175,11 +177,15 @@ export function CartProduct({
         <p className="text-xs font-bold">USD {price}</p>
         <div className="flex items-end mt-auto">
           <div className="flex items-center gap-5">
-            <button className="inline-block p-1 px-2 text-2xl border border-gray-300 rounded-lg">
+            <button
+              className="inline-block p-1 px-2 text-2xl border border-gray-300 rounded-lg"
+              onClick={() => changleAmount(id, amount - 1)}>
               <Icon.Minus className="w-4" />
             </button>
             <span>{amount}</span>
-            <button className="inline-block p-1 px-2 border border-gray-300 rounded-lg">
+            <button
+              className="inline-block p-1 px-2 border border-gray-300 rounded-lg"
+              onClick={() => changleAmount(id, amount + 1)}>
               <Icon.Plus className="w-4" />
             </button>
           </div>
