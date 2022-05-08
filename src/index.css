@@ -17,12 +17,42 @@
     max-height: 844px;
     overflow: hidden;
     background-color: #fff;
+    display: flex;
+    align-items: center;
+  }
+
+  .app {
+    display: none;
+  }
+
+  .mobile-only {
+    display: inline-block;
+    font-size: 40px;
+    color: white;
+  }
+}
+
+@media (max-width: 475px) {
+  #root {
+  }
+
+  .app {
+    display: block;
+  }
+
+  .mobile-only {
+    display: none;
   }
 }
 /* 
 .toast {
   font-family: 'Unica One', cursive;
 } */
+
+#root {
+  width: 100%;
+  background-color: transparent;
+}
 
 .bg-auth {
   background-image: url(@/assets/images/bg.jpg);

@@ -4,8 +4,11 @@ import { Toast } from '@/components'
 export default function App() {
   return (
     <>
-      <RootRoutes />
-      <Toast />
+      <h1 className="mobile-only">Only Mobile version</h1>
+      <div className="app">
+        <RootRoutes />
+        <Toast />
+      </div>
     </>
   )
 }
