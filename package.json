@@ -26,7 +26,7 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "craco eject",
-    "format": "prettier --fix --write ./src/**/*.{tsx,ts}",
+    "format": "prettier --fix --write \"./src/**/*.{tsx,ts}\"",
     "build:deploy": "env-cmd -f .env.local yarn build && firebase deploy -P ecommerce-app-f70f0"
   },
   "eslintConfig": {
