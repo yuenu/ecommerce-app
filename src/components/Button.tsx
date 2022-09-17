@@ -38,6 +38,10 @@ type SocialMediaProps = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
+type ChildrenProps = {
+  className: string
+}
+
 export function SocialMedia({
   children,
   onClick,
@@ -54,7 +58,7 @@ export function SocialMedia({
       onClick={onClick}
       {...rest}>
       {isValidElement(children) &&
-        cloneElement(children, { className: 'w-full h-full' })}
+        cloneElement(children as React.ReactElement<ChildrenProps>, { className: 'w-full h-full' })}
     </button>
   )
 }
